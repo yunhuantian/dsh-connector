@@ -1,0 +1,27 @@
+{
+  "name": "dsh-connector",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "IM/聊天平台桥接 + 主流工具深度集成（dsh-plugin-hub 官方可扩展类插件）：把微信(企微)/飞书/钉钉/QQ 等 IM 的消息接入 dsh 会话，对话中直接收发 IM 消息、深度调用 dsh 工具链。",
+  "keywords": ["dsh-plugin", "hub-ext", "connector", "im", "feishu", "wecom", "dingtalk", "deepseek-harness"],
+  "main": "./.dsh-plugin/index.mjs",
+  "exports": {
+    ".": "./.dsh-plugin/index.mjs",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "categories": ["hub-ext", "notify"]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yunhuantian/dsh-plugin-hub.git"
+  },
+  "homepage": "https://github.com/yunhuantian/dsh-plugin-hub",
+  "engines": {
+    "node": ">=22.19"
+  }
+}

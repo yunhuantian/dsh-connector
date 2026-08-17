@@ -1,0 +1,4 @@
+# dsh-connector bundle patch：以 bundle 插件形式挂载（hub 可扩展类）。
+- insert:
+    - id: dsh-connector
+      name: dsh-connector
