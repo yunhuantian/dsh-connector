@@ -65,9 +65,15 @@ export class IMAdapter extends EventTarget {
 
 /** 连接器注册表：管理所有平台适配器 + 统一桥接。 */
 export class ConnectorHub {
-  constructor() {
+  /**
+   * @param options - `readOnly: true` 时拒绝一切对外发送（只收不发）。
+   *   桥接层把 IM 变成「能驱动 Agent 的输入通道」，一旦 Agent 具备工具调用能力，
+   *   下行就是真实副作用；只读模式给用户一个可随时收紧的开关。
+   */
+  constructor(options = {}) {
     this.adapters = new Map()
     this.handlers = new Map() // 平台名 → 消息回调（可多个）
+    this.readOnly = options.readOnly === true
   }
 
   /** 注册平台适配器（id: 'feishu' 等）。 */
@@ -111,8 +117,11 @@ export class ConnectorHub {
     }
   }
 
-  /** 通过平台发消息。 */
+  /** 通过平台发消息（只读模式下拒绝）。 */
   async send(platform, chatId, text) {
+    if (this.readOnly) {
+      throw new ConnectorError('连接器处于只读模式，已拒绝发送消息（在设置里关闭「只读模式」后可发送）', 'READ_ONLY')
+    }
     const ad = this.adapters.get(platform)
     if (!ad) throw new ConnectorError(`未知平台: ${platform}`, 'NO_ADAPTER')
     return ad.send(chatId, text)
@@ -120,6 +129,6 @@ export class ConnectorHub {
 }
 
 /** 创建默认 ConnectorHub 的工厂。 */
-export function createHub() {
-  return new ConnectorHub()
+export function createHub(options) {
+  return new ConnectorHub(options)
 }

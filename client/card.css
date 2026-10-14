@@ -1,0 +1,123 @@
+/* dsh-connector 设置卡片样式。
+ *
+ * 用 CSS 变量并带兜底值：宿主主题定义了就用宿主的，没定义也能看。
+ * 每个规则都限定在 .conn-section 下，避免污染其它插件的设置页。
+ */
+.conn-section {
+  margin: 0 0 18px;
+}
+.conn-title {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dsh-text-primary, #e6e6e6);
+}
+.conn-card {
+  border: 1px solid var(--dsh-border, rgba(127, 127, 127, 0.28));
+  border-radius: 8px;
+  padding: 12px 14px;
+  background: var(--dsh-surface, rgba(127, 127, 127, 0.06));
+}
+.conn-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.conn-chip {
+  font-size: 11px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: rgba(127, 127, 127, 0.2);
+  color: var(--dsh-text-secondary, #a8a8a8);
+}
+.conn-group {
+  border: none;
+  border-top: 1px solid var(--dsh-border, rgba(127, 127, 127, 0.22));
+  margin: 12px 0 0;
+  padding: 10px 0 0;
+}
+.conn-group legend {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dsh-text-secondary, #a8a8a8);
+  padding: 0 6px 0 0;
+}
+.conn-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 8px 0;
+}
+.conn-label {
+  flex: 0 0 132px;
+  font-size: 12px;
+  line-height: 26px;
+  color: var(--dsh-text-secondary, #a8a8a8);
+}
+.conn-control {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.conn-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 4px 8px;
+  font-size: 12px;
+  line-height: 18px;
+  border-radius: 6px;
+  border: 1px solid var(--dsh-border, rgba(127, 127, 127, 0.32));
+  background: var(--dsh-input-bg, transparent);
+  color: var(--dsh-text-primary, #e6e6e6);
+}
+.conn-input:focus {
+  outline: none;
+  border-color: var(--dsh-accent, #4c8dff);
+}
+.conn-num { max-width: 120px; }
+.conn-area { resize: vertical; font-family: inherit; }
+.conn-hint {
+  margin: 2px 0 0;
+  font-size: 11px;
+  line-height: 16px;
+  color: var(--dsh-text-tertiary, #8b8b8b);
+}
+.conn-warn,
+.conn-error {
+  margin: 6px 0 0;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+.conn-warn {
+  background: rgba(210, 160, 40, 0.12);
+  color: var(--dsh-warning, #d2a028);
+}
+.conn-error {
+  background: rgba(220, 80, 80, 0.12);
+  color: var(--dsh-danger, #dc5050);
+}
+.conn-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+.conn-btn {
+  padding: 4px 14px;
+  font-size: 12px;
+  line-height: 20px;
+  border-radius: 6px;
+  border: 1px solid var(--dsh-border, rgba(127, 127, 127, 0.32));
+  background: transparent;
+  color: var(--dsh-text-primary, #e6e6e6);
+  cursor: pointer;
+}
+.conn-btn-primary {
+  border-color: transparent;
+  background: var(--dsh-accent, #4c8dff);
+  color: #fff;
+}
+.conn-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
